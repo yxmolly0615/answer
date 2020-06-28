@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//WebContent/admin/index=GBK
+encoding//WebContent/admin/index/index.html=UTF-8
+encoding//WebContent/static/admin/lib/ueditor/php/config.json=UTF-8
+encoding//config/db.properties=UTF-8
+encoding//src/com/woniu/answer/controller=UTF-8
+encoding//src/com/woniu/answer/controller/AdviceController.java=UTF-8
+encoding//src/com/woniu/answer/controller/AnswerController.java=UTF-8
+encoding//src/com/woniu/answer/controller/CateController.java=UTF-8
+encoding//src/com/woniu/answer/controller/CommentController.java=UTF-8
+encoding//src/com/woniu/answer/controller/NoticeController.java=UTF-8
+encoding//src/com/woniu/answer/controller/PmController.java=UTF-8
+encoding//src/com/woniu/answer/controller/QuestionController.java=UTF-8
+encoding//src/com/woniu/answer/controller/ReportController.java=UTF-8
+encoding//src/com/woniu/answer/controller/UserController.java=UTF-8
+encoding/<project>=UTF-8

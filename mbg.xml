@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql:///answer"
+                        userId="root"
+                        password="123456">
+            <!-- 处理mysql多个数据库拥有相同表名时，生成实体的问题 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.woniu.answer.entity" targetProject="..\answer\src">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.woniu.answer.mapper"  targetProject="..\answer\src">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.woniu.answer.mapper"  targetProject="..\answer\src">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+ 		 <table tableName="t_admin" domainObjectName="Admin"></table>
+        <table tableName="t_advice" domainObjectName="Advice"></table> 
+   		<table tableName="t_answer" domainObjectName="Answer"></table> 
+    	 <table tableName="t_cate" domainObjectName="Cate"></table>
+        <table tableName="t_comment" domainObjectName="Comment"></table>
+        <table tableName="t_level" domainObjectName="UserLevel"></table>
+        <table tableName="t_notice" domainObjectName="Notice"></table>
+   		 <table tableName="t_pm" domainObjectName="Pm"></table>
+        <table tableName="t_question" domainObjectName="Question"></table>
+        <table tableName="t_report" domainObjectName="Report"></table>
+        <table tableName="t_user" domainObjectName="User"></table> 
+
+    </context>
+</generatorConfiguration>

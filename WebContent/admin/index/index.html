@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>网站后台管理模版</title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css"/>
+	</head>
+	<body>
+		<div class="main-layout" id='main-layout'>
+			<!--侧边栏-->
+			<div class="main-layout-side">
+				<div class="m-logo">
+				</div>
+				<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+				  <li class="layui-nav-item">
+				    <a href="javascript:;"><i class="iconfont">&#xe608;</i>内容管理</a>
+				    <dl class="layui-nav-child"><!--target="_blank"打开新的target="_self"覆盖本身自己-->
+				      <dd><a href="../../cate/list" target="rightiframe" data-id='3' data-text="问题类型"><span class="l-line"></span>问题类型</a></dd>
+				      <dd><a href="../../question/list" target="rightiframe"  data-id='9' data-text="问题管理"><span class="l-line"></span>问题管理</a></dd>
+				      <dd><a href="../../answer/list" target="rightiframe"  data-id='9' data-text="答案管理"><span class="l-line"></span>答案管理</a></dd>
+				    </dl>
+				  </li>
+				  
+				  <li class="layui-nav-item">
+				    <a href="../../user/list;"  target="rightiframe" data-id='4' data-text="用户管理"><i class="iconfont">&#xe603;</i>用户管理</a>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="../../advice/list;"  target="rightiframe" data-id='4' data-text="广告管理"><i class="iconfont">&#xe603;</i>广告管理</a>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="../../notice/list;" target="rightiframe" data-id='4' data-text="公告管理"><i class="iconfont">&#xe603;</i>公告管理</a>
+				  </li>
+				   <li class="layui-nav-item">
+				    <a href="../../comment/list" target="rightiframe" data-id='4' data-text="评论管理"><i class="iconfont">&#xe603;</i>评论管理</a>
+				  </li>
+				 <li class="layui-nav-item">
+				    <a href="../../notice/list;" target="rightiframe" data-id='4' data-text="公告管理"><i class="iconfont">&#xe603;</i>公告管理</a>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="../../pm/list;"  target="rightiframe" data-id='4' data-text="私信管理"><i class="iconfont">&#xe603;</i>私信管理</a>
+				  </li>
+				   <li class="layui-nav-item">
+				    <a href="javascript:;"><i class="iconfont">&#xe608;</i>举报管理</a>
+				    <dl class="layui-nav-child"><!--target="_blank"打开新的target="_self"覆盖本身自己-->
+				      <dd><a href="../../report/questionlist" target="rightiframe" data-id='3' data-text="举报问题"><span class="l-line"></span>举报问题</a></dd>
+				      <dd><a href="../../report/answerlist" target="rightiframe"  data-id='9' data-text="举报答案"><span class="l-line"></span>举报答案</a></dd>
+				      <dd><a href="../../report/commentlist" target="rightiframe"  data-id='9' data-text="举报评论"><span class="l-line"></span>举报评论</a></dd>
+				    </dl>
+				  </li>
+				  <li class="layui-nav-item">
+				    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息"><i class="iconfont">&#xe606;</i>个人信息</a>
+				  </li>
+				  <li class="layui-nav-item">
+				  	<a href="javascript:;" data-url="system.html" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
+				  </li>
+				</ul>
+			</div>
+			<!--右侧内容-->
+			<div class="main-layout-container">
+				<!--头部-->
+				<div class="main-layout-header">
+					<div class="menu-btn" id="hideBtn">
+						<a href="javascript:;">
+							<span class="iconfont">&#xe60e;</span>
+						</a>
+					</div>
+					<ul class="layui-nav" lay-filter="rightNav">
+					  <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
+					  <li class="layui-nav-item">
+					    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">超级管理员</a>
+					  </li>
+					  <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+					</ul>
+				</div>
+				<!--主体内容-->
+				<div class="main-layout-body">
+					<!--tab 切换-->
+					<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+					  <ul class="layui-tab-title">
+					    <li class="layui-this welcome">后台主页</li>
+					  </ul>
+					  <div class="layui-tab-content">
+					    <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
+					    	<!--1-->
+					    	<iframe src="welcome.html" width="100%" height="100%" name="rightiframe" scrolling="auto" class="iframe" framborder="0"></iframe>
+					    	<!--1end-->
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<!--遮罩-->
+			<div class="main-mask">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			var scope={
+				link:'./welcome.html'
+			}
+		</script>
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/admin/js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/admin/js/main.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+</html>

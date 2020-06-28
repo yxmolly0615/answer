@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 配置扫描注解 目的是实例化bean 注入 --> 
+    <context:component-scan base-package="com.woniu.answer">
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+    
+    <!-- 加载数据库的配置信息  -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    
+    <!-- 配置数据源 -->			 	
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+		
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+        <property name="acquireIncrement" value="${jdbc.acquireIncrement}"></property>
+    </bean>
+    
+    <!-- 创建SqlSessionFactory对象  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注入mybatis的主配置文件 -->
+        <property name="configLocation" value="classpath:sqlMapConfig.xml" />
+        <!-- 需要一个数据库连接  此处我们提供一个数据源 -->
+        <property name="dataSource"  ref="dataSource"/>
+    </bean>
+    
+    <!-- 创建mapper接口的代理对象 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 遵循：mapper.xml文件和mapper.java文件 同名并且在同一个目录
+            每一个mapper接口的id  就是mapper接口名字的  把首字母小写
+            dao
+         -->
+        <property name="basePackage" value="com.woniu.answer.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    
+    <!-- AOP的注解驱动 -->
+   <!--  <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+    
+    <!-- 配置通知 -->
+    <bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 启用事务注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+<!-- 	
+	<mvc:resources mapping="/js/*" location="/js/"></mvc:resources>
+	<mvc:resources mapping="/css/*" location="/css/"></mvc:resources>
+	<mvc:resources mapping="/images/*" location="/images/"></mvc:resources>
+	 -->
+</beans>
